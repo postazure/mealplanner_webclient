@@ -1,11 +1,11 @@
 var path = require('path');
-var buildPath = path.resolve(__dirname, "./dist");
+var buildPath = path.resolve(__dirname, "./src/dist");
 var entryPath = path.resolve(__dirname, "./src/scripts");
 
 module.exports = {
   entry: {
     path: entryPath,
-    filename: 'app.jsx'
+    filename: 'app.js'
   },
   devtool: 'source-map',
   output: {
@@ -15,14 +15,14 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         loader: "babel-loader"
       }
     ]
   },
   extensions: [
-    '.jsx'
+    '.js'
   ]
 };
 
