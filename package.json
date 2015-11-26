@@ -1,0 +1,31 @@
+{
+  "name": "mealplanner_webclient",
+  "version": "1.0.0",
+  "description": "Web Client for Mealplanner API",
+  "main": "'src/client/app.jsx'",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/postazure/mealplanner_webclient.git"
+  },
+  "keywords": [
+    "Food",
+    "Meal",
+    "Planning"
+  ],
+  "author": "Max Gordon (Postazure)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/postazure/mealplanner_webclient/issues"
+  },
+  "homepage": "https://github.com/postazure/mealplanner_webclient#readme",
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "babel-core": "^6.2.1",
+    "better-console": "^0.2.4",
+    "gulp-jasmine": "^2.2.1",
+    "webpack": "^1.12.9"
+  }
+}
