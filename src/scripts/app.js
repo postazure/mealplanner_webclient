@@ -1,5 +1,4 @@
-export default class App {
-  foo() {
-    return false;
-  }
-}
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+ReactDOM.render(<App/>, root);
