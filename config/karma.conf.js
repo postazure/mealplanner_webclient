@@ -19,7 +19,7 @@ module.exports = function (config) {
       maxLogLines: 5,
       suppressErrorSummary: false,
       suppressFailed: false,
-      suppressPassed: true,
+      suppressPassed: false,
       suppressSkipped: false
     },
     webpackMiddleware: {

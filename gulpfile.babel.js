@@ -5,7 +5,7 @@ var jasmine = require('gulp-jasmine');
 var Server = require("karma").Server;
 var console = require('better-console');
 
-var assetsPath  = './src/scripts/**/*.js';
+var assetsPath  = './src/**/*.js';
 var specsPath = './spec/**/*_spec.js';
 var webpackConfig = require('./config/webpack.config.js');
 
@@ -15,7 +15,7 @@ gulp.task('default', ['development']);
 
 gulp.task('test', ['karma']);
 
-gulp.task('development', function () {
+gulp.task('development',['webpack'], function () {
   gulp.watch([assetsPath], ['webpack'])
 });
 
@@ -24,12 +24,6 @@ gulp.task('production', function () {
 });
 
 //-----------------------------------
-
-gulp.task('jasmine', function () {
-  console.clear();
-  gulp.src(specsPath)
-    .pipe(jasmine({fullStackTrace: true}))
-});
 
 gulp.task('karma', function () {
   console.clear();

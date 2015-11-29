@@ -1,14 +1,10 @@
 var path = require('path');
-var buildPath = path.resolve(__dirname, "../src/dist");
-var entryPath = path.resolve(__dirname, "../src/scripts");
+var buildPath = path.resolve(__dirname, "../public/dist");
+var entryPath = path.resolve(__dirname, "../src");
 
 module.exports = {
-  entry: {
-    path: entryPath,
-    filename: 'app.js'
-  },
+  entry: entryPath + '/main.js',
   devtool: 'source-map',
-  errorDetails: true,
   output: {
     path: buildPath,
     filename: "build.js"

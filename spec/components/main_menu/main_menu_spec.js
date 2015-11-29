@@ -11,6 +11,6 @@ describe('MainMenu', () => {
 
   it('shows hello world', () => {
     let content = TestUtils.findRenderedDOMComponentWithClass(subject, 'main-menu');
-    expect(content.innerText).toContain('Hello foo World')
+    expect(content.innerText).toContain('Main Menu')
   });
 });
