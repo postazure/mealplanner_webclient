@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gutil = require("gulp-util");
+var clean = require("gulp-clean");
 var run = require("gulp-run");
 var webpack = require('webpack');
 var jasmine = require('gulp-jasmine');
@@ -56,7 +57,23 @@ gulp.task("webpack:feature_specs", function(callback) {
   );
 });
 
-gulp.task('server:feature_specs', function (callback) {
+gulp.task('server:feature_specs', ['transfer:feature_specs'], function (callback) {
   run('cd specs_features && rspec --format documentation').exec();
+  callback()
+});
+
+
+var featureSpecs = './spec/features/**/*.rb';
+var runnerFeatureSpecs = './specs_features/spec/features/';
+
+gulp.task('transfer:feature_specs', ['clean:feature_specs'], function (callback) {
+  gulp.src(featureSpecs)
+    .pipe(gulp.dest(runnerFeatureSpecs));
+  callback()
+});
+
+gulp.task('clean:feature_specs', function (callback) {
+  gulp.src(runnerFeatureSpecs, {read: false})
+    .pipe(clean({force: true}));
   callback()
 });
