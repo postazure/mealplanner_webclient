@@ -1,0 +1,18 @@
+source 'https://rubygems.org'
+gem 'rails', '4.2.3'
+gem 'pg'
+gem 'sass-rails', '~> 5.0'
+gem 'jbuilder', '~> 2.0'
+gem 'quiet_assets'
+
+group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'capybara'
+end
+
+group :test do
+  gem 'selenium-webdriver'
+  gem 'rspec-rails'
+  gem 'chromedriver-helper'
+end
