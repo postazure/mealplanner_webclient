@@ -6,8 +6,7 @@ describe 'User Login', js: true do
     expect(page).to have_content('APP')
   end
 
-  it 'should foobar' do
-    visit root_path
-    expect(foobar).to eq false
+  it 'should not work' do
+    expect(false).to be true
   end
 end

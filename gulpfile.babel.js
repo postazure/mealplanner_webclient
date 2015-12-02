@@ -18,7 +18,7 @@ gulp.task('default', ['development']);
 
 gulp.task('test', ['karma']);
 gulp.task('test:features', ['webpack:feature_specs', 'server:feature_specs'], function (cb) {
-  var featureSpecsPath = './specs_features/spec/features/**/*.rb';
+  var featureSpecsPath = './spec_server/spec/features/**/*.rb';
   gulp.watch([assetsPath, specsPath, featureSpecsPath], ['webpack:feature_specs', 'server:feature_specs'])
 });
 
@@ -58,13 +58,14 @@ gulp.task("webpack:feature_specs", function(callback) {
 });
 
 gulp.task('server:feature_specs', ['transfer:feature_specs'], function (callback) {
-  run('cd specs_features && rspec --format documentation').exec();
+  console.clear();
+  run('cd spec/support/spec_server && rspec --format documentation').exec();
   callback()
 });
 
 
 var featureSpecs = './spec/features/**/*.rb';
-var runnerFeatureSpecs = './specs_features/spec/features/';
+var runnerFeatureSpecs = './spec/support/spec_server/spec/features/';
 
 gulp.task('transfer:feature_specs', ['clean:feature_specs'], function (callback) {
   gulp.src(featureSpecs)
@@ -73,7 +74,7 @@ gulp.task('transfer:feature_specs', ['clean:feature_specs'], function (callback)
 });
 
 gulp.task('clean:feature_specs', function (callback) {
-  gulp.src(runnerFeatureSpecs, {read: false})
+  gulp.src(runnerFeatureSpecs +'**/*.rb', {read: false})
     .pipe(clean({force: true}));
   callback()
 });

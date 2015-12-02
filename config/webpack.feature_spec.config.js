@@ -1,6 +1,6 @@
 var path = require('path');
-var buildPath = path.resolve(__dirname, "../specs_features/app/assets/javascripts");
-var entryPath = path.resolve(__dirname, "../support");
+var buildPath = path.resolve(__dirname, "../spec/support/spec_server/app/assets/javascripts");
+var entryPath = path.resolve(__dirname, "../spec/support");
 
 module.exports = {
   entry: entryPath + '/specs_feature_loader.js',
