@@ -1,14 +1,14 @@
 var gulp = require('gulp');
 var gutil = require("gulp-util");
 var clean = require("gulp-clean");
-var run = require("gulp-run");
+var shell = require("gulp-shell");
 var webpack = require('webpack');
 var jasmine = require('gulp-jasmine');
 var Server = require("karma").Server;
 var console = require('better-console');
 
 var assetsPath  = './src/**/*.js';
-var specsPath = './spec/**/*_spec.js';
+var specsPath = './spec/**/*_spec.*';
 var webpackConfig = require('./config/webpack.config.js');
 var webpackFeatureSpecConfig = require('./config/webpack.feature_spec.config.js');
 
@@ -18,8 +18,8 @@ gulp.task('default', ['development']);
 
 gulp.task('test', ['karma']);
 gulp.task('test:features', ['webpack:feature_specs', 'server:feature_specs'], function (cb) {
-  var featureSpecsPath = './spec_server/spec/features/**/*.rb';
-  gulp.watch([assetsPath, specsPath, featureSpecsPath], ['webpack:feature_specs', 'server:feature_specs'])
+
+  gulp.watch([assetsPath, specsPath], ['webpack:feature_specs', 'server:feature_specs'])
 });
 
 gulp.task('development',['webpack'], function () {
@@ -57,12 +57,16 @@ gulp.task("webpack:feature_specs", function(callback) {
   );
 });
 
-gulp.task('server:feature_specs', ['transfer:feature_specs'], function (callback) {
-  console.clear();
-  run('cd spec/support/spec_server && rspec --format documentation').exec();
-  callback()
-});
-
+gulp.task('server:feature_specs', ['transfer:feature_specs'],
+  shell.task(
+    [
+      'clear',
+      'echo About to start test runner.',
+      'cd ./spec/support/spec_server && rspec --format documentation'
+    ],
+    {ignoreErrors: true}
+  )
+);
 
 var featureSpecs = './spec/features/**/*.rb';
 var runnerFeatureSpecs = './spec/support/spec_server/spec/features/';

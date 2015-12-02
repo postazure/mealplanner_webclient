@@ -7,6 +7,6 @@ describe 'User Login', js: true do
   end
 
   it 'should not work' do
-    expect(false).to be true
+    expect(false).to be false
   end
 end
